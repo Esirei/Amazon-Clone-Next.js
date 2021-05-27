@@ -27,8 +27,7 @@ const ProductItem: FC<Props> = ({ product }) => {
         ))}
       </div>
 
-      {/* TODO line-clamp-2 */}
-      <p className="text-xs my-2">{product.description}</p>
+      <p className="text-xs my-2 line-clamp-2">{product.description}</p>
 
       <div className="mb-5">${product.price.toFixed(2)}</div>
 
