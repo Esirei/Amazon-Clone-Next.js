@@ -15,7 +15,7 @@ const ProductItem: FC<Props> = ({ product }) => {
 
   return (
     <div className="relative flex flex-col bg-white p-10">
-      <p className="text-xs italic text-gray-400">{product.category}</p>
+      <p className="text-xs italic text-gray-400 absolute top-4 right-4">{product.category}</p>
 
       <Image src={product.image} height={200} width={200} objectFit="contain" />
 
