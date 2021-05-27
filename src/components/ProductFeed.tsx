@@ -1,5 +1,6 @@
 import React, { FC } from 'react';
 import { Product } from '~/features/product';
+import ProductItem from './ProductItem';
 
 interface Props {
   products: Product[];
@@ -8,7 +9,7 @@ interface Props {
 const ProductFeed: FC<Props> = ({ products }) => (
   <div>
     {products.map(product => (
-      <p>{product.title}</p>
+      <ProductItem product={product} key={product.id} />
     ))}
   </div>
 );
