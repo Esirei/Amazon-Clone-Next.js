@@ -8,12 +8,12 @@ module.exports = {
         'amazon-blue': {
           light: '#232F3E',
           DEFAULT: '#131921',
-        }
-      }
+        },
+      },
     },
   },
   variants: {
     extend: {},
   },
-  plugins: [],
-}
+  plugins: [require('@tailwindcss/line-clamp')],
+};
