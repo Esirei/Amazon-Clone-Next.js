@@ -40,6 +40,22 @@ const Header: FC = () => (
         </div>
       </div>
     </div>
+
+    <div className="flex items-center space-x-3 px-3 py-2 bg-amazon-blue-light text-white text-sm">
+      <p className="cursor-pointer hover:underline flex items-center">
+        <MenuIcon className="h-6 mr-1" />
+        All
+      </p>
+      <p className="cursor-pointer hover:underline">Prime Video</p>
+      <p className="cursor-pointer hover:underline">Amazon Business</p>
+      <p className="cursor-pointer hover:underline">Today&apos;s Deals</p>
+      <p className="cursor-pointer hover:underline hidden lg:inline">Electronics</p>
+      <p className="cursor-pointer hover:underline hidden lg:inline">Food & Grocery</p>
+      <p className="cursor-pointer hover:underline hidden lg:inline">Prime</p>
+      <p className="cursor-pointer hover:underline hidden lg:inline">Buy Again</p>
+      <p className="cursor-pointer hover:underline hidden lg:inline">Shopper Toolkit</p>
+      <p className="cursor-pointer hover:underline hidden lg:inline">Health & Personal Care</p>
+    </div>
   </header>
 );
 
