@@ -14,7 +14,7 @@ const ProductItem: FC<Props> = ({ product }) => {
   const hasPrime = React.useRef(Math.random() > 0.5).current;
 
   return (
-    <div className="relative flex flex-col m-5 bg-white p-10">
+    <div className="relative flex flex-col bg-white p-10">
       <p className="text-xs italic text-gray-400">{product.category}</p>
 
       <Image src={product.image} height={200} width={200} objectFit="contain" />
