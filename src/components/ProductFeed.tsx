@@ -11,6 +11,7 @@ const ProductFeed: FC<Props> = ({ products }) => (
     {products.map(product => (
       <ProductItem product={product} key={product.id} />
     ))}
+    <img src="/products-feed-ad.jpg" alt="advert" className="md:col-span-full" />
   </div>
 );
 
