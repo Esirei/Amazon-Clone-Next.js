@@ -8,10 +8,16 @@ interface Props {
 
 const ProductFeed: FC<Props> = ({ products }) => (
   <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 mx-5 -mt-24 sm:-mt-32 md:-mt-48 lg:-mt-64 xl:-mt-80 pb-5">
-    {products.map(product => (
+    {products.slice(0, 4).map(product => (
       <ProductItem product={product} key={product.id} />
     ))}
     <img src="/products-feed-ad.jpg" alt="advert" className="md:col-span-full" />
+    <div className="md:col-span-2">
+      <ProductItem product={products[4]} />
+    </div>
+    {products.slice(5).map(product => (
+      <ProductItem product={product} key={product.id} />
+    ))}
   </div>
 );
 
