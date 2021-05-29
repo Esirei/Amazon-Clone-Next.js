@@ -12,9 +12,7 @@ const ProductFeed: FC<Props> = ({ products }) => (
       <ProductItem product={product} key={product.id} />
     ))}
     <img src="/products-feed-ad.jpg" alt="advert" className="md:col-span-full" />
-    <div className="md:col-span-2">
-      <ProductItem product={products[4]} />
-    </div>
+    <ProductItem product={products[4]} className="md:col-span-2" />
     {products.slice(5).map(product => (
       <ProductItem product={product} key={product.id} />
     ))}

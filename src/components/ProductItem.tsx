@@ -5,16 +5,17 @@ import { StarIcon } from '@heroicons/react/solid';
 
 interface Props {
   product: Product;
+  className?: string;
 }
 
 const MAX_RATING = 5;
 
-const ProductItem: FC<Props> = ({ product }) => {
+const ProductItem: FC<Props> = ({ product, className }) => {
   const rating = React.useRef(Math.ceil(Math.random() * MAX_RATING)).current;
   const hasPrime = React.useRef(Math.random() > 0.5).current;
 
   return (
-    <div className="relative flex flex-col bg-white p-10">
+    <div className={`relative flex flex-col bg-white p-10${className && ` ${className}`}`}>
       <p className="text-xs italic text-gray-400 absolute top-4 right-4">{product.category}</p>
 
       <Image src={product.image} height={200} width={200} objectFit="contain" />
@@ -43,5 +44,7 @@ const ProductItem: FC<Props> = ({ product }) => {
     </div>
   );
 };
+
+ProductItem.defaultProps = { className: '' };
 
 export default ProductItem;
