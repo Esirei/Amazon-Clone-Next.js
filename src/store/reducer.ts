@@ -1,8 +1,8 @@
 import { combineReducers } from '@reduxjs/toolkit';
-import { basketReducer } from '~/features/basket';
+import { cartReducer } from '~/features/cart';
 
 const reducer = combineReducers({
-  basket: basketReducer,
+  cart: cartReducer,
 });
 
 export default reducer;

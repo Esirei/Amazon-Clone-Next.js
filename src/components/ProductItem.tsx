@@ -39,7 +39,7 @@ const ProductItem: FC<Props> = ({ product, className }) => {
         </div>
       )}
       <button className="mt-auto p-2 text-xs md:text-sm bg-gradient-to-b from-yellow-200 active:from-yellow-500 to-yellow-400 border border-yellow-300 rounded-sm focus:outline-none focus:ring-1 ring-yellow-500 ring-offset-1 ring-offset-yellow-400">
-        Add to Basket
+        Add to Cart
       </button>
     </div>
   );
