@@ -32,7 +32,16 @@ const slice = createSlice({
       }
       state.items[payload.id] = { ...payload, quantity: 1, total: payload.price };
     },
-    removeFromCart: (state, action) => {},
+    removeFromCart: (state, action: PayloadAction<number>) => {
+      const item = state.items[action.payload];
+      if (!item) return;
+      if (item.quantity === 1) {
+        delete state.items[action.payload];
+        return;
+      }
+      item.quantity -= 1;
+      item.total = item.quantity * item.price;
+    },
   },
 });
 
