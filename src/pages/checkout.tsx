@@ -12,7 +12,7 @@ const Checkout: FC = () => {
   const itemsQuantity = useSelector(selectCartItemsQuantity);
   const itemsTotal = useSelector(selectCartItemsTotal);
   return (
-    <div className="bg-gray-100">
+    <div className="bg-gray-100 min-h-screen">
       <Header />
       <main className="lg:flex max-w-screen-2xl mx-auto">
         <section className="flex-grow m-5 shadow-sm">
@@ -29,23 +29,21 @@ const Checkout: FC = () => {
           </div>
         </section>
 
-        <section className="flex flex-col bg-white p-10 shadow-md">
-          {itemsQuantity && (
-            <>
-              <h2 className="whitespace-nowrap">
-                Subtotal ({itemsQuantity} item{itemsQuantity > 1 && 's'}):{' '}
-                <span className="font-bold">${itemsTotal.toFixed(2)}</span>
-              </h2>
-              <button
-                disabled={!session}
-                className={`mt-2 p-2 text-xs md:text-sm bg-gradient-to-b from-yellow-200 active:from-yellow-500 to-yellow-400 border border-yellow-300 rounded-sm focus:outline-none focus:ring-1 ring-yellow-500 ring-offset-1 ring-offset-yellow-400 ${
-                  !session &&
-                  'cursor-not-allowed from-gray-300 to-gray-500 border-gray-200 text-gray-200'
-                }`.trim()}>
-                {session ? 'Checkout' : 'Sign In to Checkout'}
-              </button>
-            </>
-          )}
+        <section className={`${!itemsQuantity ? 'invisible' : ''}`}>
+          <div className="flex flex-col bg-white p-10 mt-4 shadow-md">
+            <h2 className="whitespace-nowrap">
+              Subtotal ({itemsQuantity} item{itemsQuantity > 1 && 's'}):{' '}
+              <span className="font-bold">${itemsTotal.toFixed(2)}</span>
+            </h2>
+            <button
+              disabled={!session}
+              className={`mt-2 p-2 text-xs md:text-sm bg-gradient-to-b from-yellow-200 active:from-yellow-500 to-yellow-400 border border-yellow-300 rounded-sm focus:outline-none focus:ring-1 ring-yellow-500 ring-offset-1 ring-offset-yellow-400 ${
+                !session &&
+                'cursor-not-allowed from-gray-300 to-gray-500 border-gray-200 text-gray-200'
+              }`.trim()}>
+              {session ? 'Checkout' : 'Sign In to Checkout'}
+            </button>
+          </div>
         </section>
       </main>
     </div>
