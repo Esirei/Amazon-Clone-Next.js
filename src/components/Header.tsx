@@ -2,9 +2,11 @@ import React, { FC } from 'react';
 import Image from 'next/image';
 import { MenuIcon, SearchIcon, ShoppingCartIcon } from '@heroicons/react/outline';
 import { signIn, signOut, useSession } from 'next-auth/client';
+import { useRouter } from 'next/router';
 
 const Header: FC = () => {
   const [session] = useSession();
+  const router = useRouter();
   return (
     <header>
       <div className="flex flex-1 items-center bg-amazon-blue p-1 py-2">
@@ -15,6 +17,7 @@ const Header: FC = () => {
             height="40"
             objectFit="contain"
             className="cursor-pointer"
+            onClick={() => router.push('/')}
           />
         </div>
 
@@ -34,7 +37,9 @@ const Header: FC = () => {
             <p>Returns</p>
             <p className="font-extrabold md:text-sm">& Orders</p>
           </div>
-          <div className="cursor-pointer hover:underline flex items-center">
+          <button
+            className="cursor-pointer hover:underline focus:outline-none flex items-center"
+            onClick={() => router.push('/checkout')}>
             <div className="h-10 relative">
               <ShoppingCartIcon className="h-10" />
               <span className="absolute top-0 right-0 h-4 w-4 text-center rounded-full text-black font-bold bg-yellow-400">
@@ -42,7 +47,7 @@ const Header: FC = () => {
               </span>
             </div>
             <p className="hidden md:block mt-2 font-extrabold md:text-sm">Basket</p>
-          </div>
+          </button>
         </div>
       </div>
 
