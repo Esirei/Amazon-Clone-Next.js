@@ -18,7 +18,7 @@ const ProductItem: FC<Props> = ({ product, className }) => {
 
   const dispatch = useDispatch();
 
-  const addItemToCart = () => dispatch(addToCart(product));
+  const addItemToCart = () => dispatch(addToCart({ ...product, hasPrime, rating }));
 
   return (
     <div className={`relative flex flex-col bg-white p-10 ${className}`.trim()}>
