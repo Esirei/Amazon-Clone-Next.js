@@ -2,23 +2,35 @@ import { createSlice, PayloadAction, createSelector } from '@reduxjs/toolkit';
 import { State } from '~/store';
 import { Product } from '../product';
 
-export interface CheckoutProduct extends Product {
+export interface CartProduct extends Product {
   hasPrime;
   rating;
 }
 
-interface CartState {
-  items: CheckoutProduct[];
+export interface CheckoutProduct extends CartProduct {
+  quantity: number;
+  total: number;
 }
 
-const initialState: CartState = { items: [] };
+interface CartState {
+  items: Record<CartProduct['id'], CheckoutProduct>;
+}
+
+const initialState: CartState = { items: {} };
 
 const slice = createSlice({
   name: 'cart',
   initialState,
   reducers: {
-    addToCart: (state, action: PayloadAction<CheckoutProduct>) => {
-      state.items.push(action.payload);
+    addToCart: (state, action: PayloadAction<CartProduct>) => {
+      const { payload } = action;
+      const item = state.items[payload.id];
+      if (item) {
+        item.quantity += 1;
+        item.total = item.quantity * payload.price;
+        return;
+      }
+      state.items[payload.id] = { ...payload, quantity: 1, total: payload.price };
     },
     removeFromCart: (state, action) => {},
   },
@@ -27,5 +39,7 @@ const slice = createSlice({
 export const { addToCart, removeFromCart } = slice.actions;
 export const cartReducer = slice.reducer;
 
-export const selectCartItems = (state: State) => state.cart.items;
-export const selectTotalCartItems = createSelector(selectCartItems, items => items.length);
+export const selectCartItems = (state: State) => Object.values(state.cart.items);
+export const selectCartItemsQuantity = createSelector(selectCartItems, items =>
+  items.reduce((quantity, product) => quantity + product.quantity, 0),
+);

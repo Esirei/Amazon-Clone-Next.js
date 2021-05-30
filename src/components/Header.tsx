@@ -4,12 +4,12 @@ import { MenuIcon, SearchIcon, ShoppingCartIcon } from '@heroicons/react/outline
 import { signIn, signOut, useSession } from 'next-auth/client';
 import { useRouter } from 'next/router';
 import { useSelector } from 'react-redux';
-import { selectTotalCartItems } from '~/features/cart';
+import { selectCartItemsQuantity } from '~/features/cart';
 
 const Header: FC = () => {
   const [session] = useSession();
   const router = useRouter();
-  const totalItems = useSelector(selectTotalCartItems);
+  const itemsQuantity = useSelector(selectCartItemsQuantity);
   return (
     <header>
       <div className="flex flex-1 items-center bg-amazon-blue p-1 py-2">
@@ -46,7 +46,7 @@ const Header: FC = () => {
             <div className="h-10 relative">
               <ShoppingCartIcon className="h-10" />
               <span className="absolute top-0 right-0 h-4 w-4 text-center rounded-full text-black font-bold bg-yellow-400">
-                {totalItems}
+                {itemsQuantity}
               </span>
             </div>
             <p className="hidden md:block mt-2 font-extrabold md:text-sm">Basket</p>
