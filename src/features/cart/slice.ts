@@ -1,4 +1,4 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction, createSelector } from '@reduxjs/toolkit';
 import { State } from '~/store';
 import { Product } from '../product';
 
@@ -23,3 +23,4 @@ export const { addToCart, removeFromCart } = slice.actions;
 export const cartReducer = slice.reducer;
 
 export const selectCartItems = (state: State) => state.cart.items;
+export const selectTotalCartItems = createSelector(selectCartItems, items => items.length);
