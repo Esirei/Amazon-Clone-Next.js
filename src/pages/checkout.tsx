@@ -30,7 +30,7 @@ const Checkout: FC = () => {
         </section>
 
         <section className={`${!itemsQuantity ? 'invisible' : ''}`}>
-          <div className="flex flex-col bg-white p-10 mt-4 shadow-md">
+          <div className="flex flex-col bg-white p-10 mt-4 shadow-md sticky top-4">
             <h2 className="whitespace-nowrap">
               Subtotal ({itemsQuantity} item{itemsQuantity > 1 && 's'}):{' '}
               <span className="font-bold">${itemsTotal.toFixed(2)}</span>
